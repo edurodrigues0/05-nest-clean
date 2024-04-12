@@ -1,12 +1,13 @@
-import { Answer } from '@/domain/forum/enterprise/entities/answer'
-import { AnswersRepository } from '../../repositories/answers-repository'
+import { Either, left, right } from '@/core/either'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { AnswerNotFoundError } from '@/core/errors/errors/answer-not-found-error'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
-import { Either, left, right } from '@/core/either'
-import { AnswerAttachment } from '@/domain/forum/enterprise/entities/answer-attachment'
-import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { Answer } from '@/domain/forum/enterprise/entities/answer'
 import { AnswerAttachmentList } from '@/domain/forum/enterprise/entities/answer-attachement-list'
+import { AnswerAttachment } from '@/domain/forum/enterprise/entities/answer-attachment'
+
 import { AnswerAttachmentsRepository } from '../../repositories/answer-attachments-repository'
+import { AnswersRepository } from '../../repositories/answers-repository'
 
 interface EditAnswerUseCaseRequest {
   authorId: string

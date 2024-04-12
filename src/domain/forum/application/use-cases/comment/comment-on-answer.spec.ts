@@ -1,9 +1,10 @@
-import { beforeEach } from 'vitest'
-import { InMemoryAnswerRepository } from 'test/repositories/in-memory-answers-repository'
-import { CommentOnAnswerUseCase } from './comment-on-answer'
 import { makeAnswer } from 'test/factories/make-answer'
-import { InMemoryAnswerCommentsRepository } from 'test/repositories/in-memory-answer-comments-repository'
 import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/in-memory-answer-attachments-repository'
+import { InMemoryAnswerCommentsRepository } from 'test/repositories/in-memory-answer-comments-repository'
+import { InMemoryAnswerRepository } from 'test/repositories/in-memory-answers-repository'
+import { beforeEach } from 'vitest'
+
+import { CommentOnAnswerUseCase } from './comment-on-answer'
 
 let inMemoryAnswersRepository: InMemoryAnswerRepository
 let inMemoryAnswerCommentsRepository: InMemoryAnswerCommentsRepository

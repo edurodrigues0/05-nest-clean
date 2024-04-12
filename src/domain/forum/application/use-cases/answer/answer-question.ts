@@ -1,9 +1,10 @@
+import { Either, right } from '@/core/either'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { AnswerAttachmentList } from '@/domain/forum/enterprise/entities/answer-attachement-list'
+import { AnswerAttachment } from '@/domain/forum/enterprise/entities/answer-attachment'
+
 import { Answer } from '../../../enterprise/entities/answer'
 import { AnswersRepository } from '../../repositories/answers-repository'
-import { Either, right } from '@/core/either'
-import { AnswerAttachment } from '@/domain/forum/enterprise/entities/answer-attachment'
-import { AnswerAttachmentList } from '@/domain/forum/enterprise/entities/answer-attachement-list'
 
 interface AnswerQuestionUseCaseRequest {
   instructorId: string

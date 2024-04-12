@@ -1,10 +1,11 @@
 import { Either, left, right } from '@/core/either'
+
+import { AnswerNotFoundError } from '../../../../core/errors/errors/answer-not-found-error'
+import { NotAllowedError } from '../../../../core/errors/errors/not-allowed-error'
+import { QuestionNotFoundError } from '../../../../core/errors/errors/question-not-found-error'
 import { Question } from '../../enterprise/entities/question'
 import { AnswersRepository } from '../repositories/answers-repository'
 import { QuestionsRepository } from '../repositories/questions-repository'
-import { NotAllowedError } from '../../../../core/errors/errors/not-allowed-error'
-import { AnswerNotFoundError } from '../../../../core/errors/errors/answer-not-found-error'
-import { QuestionNotFoundError } from '../../../../core/errors/errors/question-not-found-error'
 
 interface ChooseQuestionBestAnswerUseCaseRequest {
   authorId: string

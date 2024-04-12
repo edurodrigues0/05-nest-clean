@@ -1,9 +1,10 @@
-import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { QuestionsRepository } from '../../repositories/questions-repository'
-import { QuestionComment } from '@/domain/forum/enterprise/entities/question-comment'
-import { QuestionsCommentsRepository } from '../../repositories/question-comments-repository'
 import { Either, left, right } from '@/core/either'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { QuestionNotFoundError } from '@/core/errors/errors/question-not-found-error'
+import { QuestionComment } from '@/domain/forum/enterprise/entities/question-comment'
+
+import { QuestionsCommentsRepository } from '../../repositories/question-comments-repository'
+import { QuestionsRepository } from '../../repositories/questions-repository'
 
 interface CommentOnQuestionUseCaseRequest {
   authorId: string

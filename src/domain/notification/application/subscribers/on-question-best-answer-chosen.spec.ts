@@ -1,17 +1,18 @@
 import { makeAnswer } from 'test/factories/make-answer'
-import { InMemoryAnswerRepository } from 'test/repositories/in-memory-answers-repository'
+import { makeQuestion } from 'test/factories/make-question'
 import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/in-memory-answer-attachments-repository'
-import { InMemoryQuestionRepository } from 'test/repositories/in-memory-questions-repository'
+import { InMemoryAnswerRepository } from 'test/repositories/in-memory-answers-repository'
+import { InMemoryNotificationRepository } from 'test/repositories/in-memory-notifications-repository'
 import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
+import { InMemoryQuestionRepository } from 'test/repositories/in-memory-questions-repository'
+import { waitFor } from 'test/utils/wait-for'
+import { MockInstance } from 'vitest'
+
 import {
   SendNotificationUseCase,
   SendNotificationUseCaseRequest,
   SendNotificationUseCaseResponse,
 } from '../use-cases/send-notification'
-import { InMemoryNotificationRepository } from 'test/repositories/in-memory-notifications-repository'
-import { makeQuestion } from 'test/factories/make-question'
-import { MockInstance } from 'vitest'
-import { waitFor } from 'test/utils/wait-for'
 import { OnQuestionBestAnswerChosen } from './on-question-best-answer-chosen'
 
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository

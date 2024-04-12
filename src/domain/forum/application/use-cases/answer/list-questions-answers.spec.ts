@@ -1,8 +1,10 @@
-import { InMemoryAnswerRepository } from 'test/repositories/in-memory-answers-repository'
 import { makeAnswer } from 'test/factories/make-answer'
-import { ListQuestionAnswersUseCase } from './list-questions-answers'
-import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/in-memory-answer-attachments-repository'
+import { InMemoryAnswerRepository } from 'test/repositories/in-memory-answers-repository'
+
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+
+import { ListQuestionAnswersUseCase } from './list-questions-answers'
 
 let inMemoryAnswersRepository: InMemoryAnswerRepository
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository

@@ -1,7 +1,9 @@
-import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { ListQuestionCommentsUseCase } from './list-question-comments'
-import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
 import { makeQuestionComment } from 'test/factories/make-question-comment'
+import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
+
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+
+import { ListQuestionCommentsUseCase } from './list-question-comments'
 
 let inMemoryQuestionCommentRepository: InMemoryQuestionCommentsRepository
 let sut: ListQuestionCommentsUseCase

@@ -1,11 +1,11 @@
-import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 import { makeQuestion } from 'test/factories/make-question'
+import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
+import { InMemoryQuestionRepository } from 'test/repositories/in-memory-questions-repository'
+
+import { QuestionNotFoundError } from '@/core/errors/errors/question-not-found-error'
+import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 
 import { GetQuestionBySlugUseCase } from './get-question-by-slug'
-import { QuestionNotFoundError } from '@/core/errors/errors/question-not-found-error'
-
-import { InMemoryQuestionRepository } from 'test/repositories/in-memory-questions-repository'
-import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
 
 let inMemoryQuestionsRepository: InMemoryQuestionRepository
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository

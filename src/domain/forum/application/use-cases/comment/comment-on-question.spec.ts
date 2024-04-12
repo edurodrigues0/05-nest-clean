@@ -1,9 +1,10 @@
-import { beforeEach } from 'vitest'
-import { InMemoryQuestionRepository } from 'test/repositories/in-memory-questions-repository'
-import { CommentOnQuestionUseCase } from './comment-on-question'
-import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
 import { makeQuestion } from 'test/factories/make-question'
 import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
+import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
+import { InMemoryQuestionRepository } from 'test/repositories/in-memory-questions-repository'
+import { beforeEach } from 'vitest'
+
+import { CommentOnQuestionUseCase } from './comment-on-question'
 
 let inMemoryQuestionsRepository: InMemoryQuestionRepository
 let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentsRepository
