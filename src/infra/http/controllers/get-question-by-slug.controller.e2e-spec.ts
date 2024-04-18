@@ -8,11 +8,9 @@ import { StudentFactory } from 'test/factories/make-student'
 import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 import { AppModule } from '@/infra/app.module'
 import { DatabaseModule } from '@/infra/database/database.module'
-import { PrismaService } from '@/infra/database/prisma/prisma.service'
 
 describe('Get question by slug (E2E)', () => {
   let app: INestApplication
-  let prisma: PrismaService
   let studentFactory: StudentFactory
   let questionFactory: QuestionFactory
   let jwt: JwtService
@@ -25,7 +23,6 @@ describe('Get question by slug (E2E)', () => {
 
     app = moduleRef.createNestApplication()
 
-    prisma = moduleRef.get(PrismaService)
     studentFactory = moduleRef.get(StudentFactory)
     questionFactory = moduleRef.get(QuestionFactory)
     jwt = moduleRef.get(JwtService)
@@ -38,7 +35,7 @@ describe('Get question by slug (E2E)', () => {
 
     const accessToken = jwt.sign({ sub: user.id.toString() })
 
-    await questionFactory.makePrismaStudent({
+    await questionFactory.makePrismaQuestion({
       authorId: user.id,
       title: 'Question 01',
       slug: Slug.create('question-01'),
