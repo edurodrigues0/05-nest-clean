@@ -1,3 +1,5 @@
+import { Injectable } from '@nestjs/common'
+
 import { Either, left, right } from '@/core/either'
 import { AnswerNotFoundError } from '@/core/errors/errors/answer-not-found-error'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
@@ -14,6 +16,7 @@ type DeleteAnswerUseCaseResponse = Either<
   null
 >
 
+@Injectable()
 export class DeleteAnswerUseCase {
   constructor(private answerRepository: AnswersRepository) {}
 
