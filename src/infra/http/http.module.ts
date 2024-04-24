@@ -9,6 +9,7 @@ import { CommentOnAnswerUseCase } from '@/domain/forum/application/use-cases/com
 import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/comment/comment-on-question'
 import { DeleteAnswerCommentUseCase } from '@/domain/forum/application/use-cases/comment/delete-answer-comment'
 import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cases/comment/delete-question-comment'
+import { ListAnswerCommentsUseCase } from '@/domain/forum/application/use-cases/comment/list-answer-comments'
 import { ListQuestionCommentsUseCase } from '@/domain/forum/application/use-cases/comment/list-question-comments'
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/question/create-question'
 import { DeleteQuestionUseCase } from '@/domain/forum/application/use-cases/question/delete-question'
@@ -33,6 +34,7 @@ import { DeleteQuestionController } from './controllers/delete-question.controll
 import { DeleteQuestionCommentController } from './controllers/delete-question-comment.controller'
 import { EditAnswerController } from './controllers/edit-answer.controller'
 import { EditQuestionController } from './controllers/edit-question.controller'
+import { FetchAnswerCommentsController } from './controllers/fetch-answer-comments.controller'
 import { FetchQuestionCommentsController } from './controllers/fetch-question-comments.controller'
 import { FetchQuestionAnswersController } from './controllers/fetch-questions-answers.controller'
 import { FetchRecentQuestionsController } from './controllers/fetch-recent-questions.controller'
@@ -58,6 +60,7 @@ import { GetQuestionBySlugController } from './controllers/get-question-by-slug.
     CommentOnAnswerController,
     DeleteAnswerCommentController,
     FetchQuestionCommentsController,
+    FetchAnswerCommentsController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -77,6 +80,7 @@ import { GetQuestionBySlugController } from './controllers/get-question-by-slug.
     CommentOnAnswerUseCase,
     DeleteAnswerCommentUseCase,
     ListQuestionCommentsUseCase,
+    ListAnswerCommentsUseCase,
   ],
 })
 export class HttpModule {}
