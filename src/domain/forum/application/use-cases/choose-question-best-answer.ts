@@ -1,3 +1,5 @@
+import { Injectable } from '@nestjs/common'
+
 import { Either, left, right } from '@/core/either'
 
 import { AnswerNotFoundError } from '../../../../core/errors/errors/answer-not-found-error'
@@ -19,6 +21,7 @@ type ChooseQuestionBestAnswerUseCaseResponse = Either<
   }
 >
 
+@Injectable()
 export class ChooseQuestionBestAnswerUseCase {
   constructor(
     private answersRepository: AnswersRepository,
