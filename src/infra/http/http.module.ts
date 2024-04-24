@@ -5,6 +5,7 @@ import { DeleteAnswerUseCase } from '@/domain/forum/application/use-cases/answer
 import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/answer/edit-answer'
 import { ListQuestionAnswersUseCase } from '@/domain/forum/application/use-cases/answer/list-questions-answers'
 import { ChooseQuestionBestAnswerUseCase } from '@/domain/forum/application/use-cases/choose-question-best-answer'
+import { CommentOnAnswerUseCase } from '@/domain/forum/application/use-cases/comment/comment-on-answer'
 import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/comment/comment-on-question'
 import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cases/comment/delete-question-comment'
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/question/create-question'
@@ -20,6 +21,7 @@ import { DatabaseModule } from '../database/database.module'
 import { AnswerQuestionController } from './controllers/answer-question.controller'
 import { AuthenticateController } from './controllers/authenticate.controller'
 import { ChooseQuestionBestAnswerController } from './controllers/choose-question-best-answer.controller'
+import { CommentOnAnswerController } from './controllers/comment-on-answer.controller'
 import { CommentOnQuestionController } from './controllers/comment-on-question.controller'
 import { CreatedAccountController } from './controllers/create-account.controller'
 import { CreateQuestionController } from './controllers/create-question.controller'
@@ -49,6 +51,7 @@ import { GetQuestionBySlugController } from './controllers/get-question-by-slug.
     ChooseQuestionBestAnswerController,
     CommentOnQuestionController,
     DeleteQuestionCommentController,
+    CommentOnAnswerController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -65,6 +68,7 @@ import { GetQuestionBySlugController } from './controllers/get-question-by-slug.
     ChooseQuestionBestAnswerUseCase,
     CommentOnQuestionUseCase,
     DeleteQuestionCommentUseCase,
+    CommentOnAnswerUseCase,
   ],
 })
 export class HttpModule {}
