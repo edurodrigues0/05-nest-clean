@@ -7,6 +7,7 @@ import { ListQuestionAnswersUseCase } from '@/domain/forum/application/use-cases
 import { ChooseQuestionBestAnswerUseCase } from '@/domain/forum/application/use-cases/choose-question-best-answer'
 import { CommentOnAnswerUseCase } from '@/domain/forum/application/use-cases/comment/comment-on-answer'
 import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/comment/comment-on-question'
+import { DeleteAnswerCommentUseCase } from '@/domain/forum/application/use-cases/comment/delete-answer-comment'
 import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cases/comment/delete-question-comment'
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/question/create-question'
 import { DeleteQuestionUseCase } from '@/domain/forum/application/use-cases/question/delete-question'
@@ -26,6 +27,7 @@ import { CommentOnQuestionController } from './controllers/comment-on-question.c
 import { CreatedAccountController } from './controllers/create-account.controller'
 import { CreateQuestionController } from './controllers/create-question.controller'
 import { DeleteAnswerController } from './controllers/delete-answer.controller'
+import { DeleteAnswerCommentController } from './controllers/delete-answer-comment.controller'
 import { DeleteQuestionController } from './controllers/delete-question.controller'
 import { DeleteQuestionCommentController } from './controllers/delete-question-comment.controller'
 import { EditAnswerController } from './controllers/edit-answer.controller'
@@ -52,6 +54,7 @@ import { GetQuestionBySlugController } from './controllers/get-question-by-slug.
     CommentOnQuestionController,
     DeleteQuestionCommentController,
     CommentOnAnswerController,
+    DeleteAnswerCommentController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -69,6 +72,7 @@ import { GetQuestionBySlugController } from './controllers/get-question-by-slug.
     CommentOnQuestionUseCase,
     DeleteQuestionCommentUseCase,
     CommentOnAnswerUseCase,
+    DeleteAnswerCommentUseCase,
   ],
 })
 export class HttpModule {}
