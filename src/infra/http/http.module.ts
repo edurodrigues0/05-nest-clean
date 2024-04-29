@@ -4,6 +4,7 @@ import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answ
 import { DeleteAnswerUseCase } from '@/domain/forum/application/use-cases/answer/delete-answer'
 import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/answer/edit-answer'
 import { ListQuestionAnswersUseCase } from '@/domain/forum/application/use-cases/answer/list-questions-answers'
+import { UploadAndCreateAttachmentUseCase } from '@/domain/forum/application/use-cases/attachment/upload-and-create-attatchment'
 import { ChooseQuestionBestAnswerUseCase } from '@/domain/forum/application/use-cases/choose-question-best-answer'
 import { CommentOnAnswerUseCase } from '@/domain/forum/application/use-cases/comment/comment-on-answer'
 import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/comment/comment-on-question'
@@ -84,6 +85,7 @@ import { UploadAttachmentController } from './controllers/upload-attachment.cont
     DeleteAnswerCommentUseCase,
     ListQuestionCommentsUseCase,
     ListAnswerCommentsUseCase,
+    UploadAndCreateAttachmentUseCase,
   ],
 })
 export class HttpModule {}
