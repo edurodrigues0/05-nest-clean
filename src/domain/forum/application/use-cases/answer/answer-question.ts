@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common'
 
 import { Either, right } from '@/core/either'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { Answer } from '@/domain/forum/enterprise/entities/answer'
 import { AnswerAttachmentList } from '@/domain/forum/enterprise/entities/answer-attachement-list'
 import { AnswerAttachment } from '@/domain/forum/enterprise/entities/answer-attachment'
 
-import { Answer } from '../../../enterprise/entities/answer'
 import { AnswersRepository } from '../../repositories/answers-repository'
 
 interface AnswerQuestionUseCaseRequest {
@@ -15,7 +15,12 @@ interface AnswerQuestionUseCaseRequest {
   content: string
 }
 
-type AnswerQuestionUseCaseResponse = Either<null, { answer: Answer }>
+type AnswerQuestionUseCaseResponse = Either<
+  null,
+  {
+    answer: Answer
+  }
+>
 
 @Injectable()
 export class AnswerQuestionUseCase {
@@ -33,9 +38,9 @@ export class AnswerQuestionUseCase {
       questionId: new UniqueEntityID(questionId),
     })
 
-    const answerAttachments = attachmentsIds.map((id) => {
+    const answerAttachments = attachmentsIds.map((attachmentId) => {
       return AnswerAttachment.create({
-        attachmentId: new UniqueEntityID(id),
+        attachmentId: new UniqueEntityID(attachmentId),
         answerId: answer.id,
       })
     })

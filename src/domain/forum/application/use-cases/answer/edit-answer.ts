@@ -20,9 +20,7 @@ interface EditAnswerUseCaseRequest {
 
 type EditAnswerUseCaseResponse = Either<
   AnswerNotFoundError | NotAllowedError,
-  {
-    answer: Answer
-  }
+  { answer: Answer }
 >
 
 @Injectable()

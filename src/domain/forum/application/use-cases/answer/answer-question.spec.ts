@@ -11,6 +11,8 @@ let sut: AnswerQuestionUseCase
 
 describe('Create Answer', () => {
   beforeEach(() => {
+    inMemoryAnswerAttachmentsRepository =
+      new InMemoryAnswerAttachmentsRepository()
     inMemoryAnswerRepository = new InMemoryAnswerRepository(
       inMemoryAnswerAttachmentsRepository,
     )
@@ -39,5 +41,27 @@ describe('Create Answer', () => {
         attachmentId: new UniqueEntityID('anexo-2'),
       }),
     ])
+  })
+
+  it('should persist attachments when creating a new answer', async () => {
+    const result = await sut.execute({
+      questionId: '1',
+      authorId: 'author-01',
+      content: 'Conteúdo da resposta.',
+      attachmentsIds: ['anexo-1', 'anexo-2'],
+    })
+
+    expect(result.isRight()).toBe(true)
+    expect(inMemoryAnswerAttachmentsRepository.items).toHaveLength(2)
+    expect(inMemoryAnswerAttachmentsRepository.items).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          attachmentId: new UniqueEntityID('anexo-1'),
+        }),
+        expect.objectContaining({
+          attachmentId: new UniqueEntityID('anexo-2'),
+        }),
+      ]),
+    )
   })
 })
