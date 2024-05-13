@@ -1,6 +1,11 @@
+import { makeAttachment } from 'test/factories/make-attachment'
 import { makeQuestion } from 'test/factories/make-question'
+import { makeQuestionAttachment } from 'test/factories/make-question-attachment'
+import { makeStudent } from 'test/factories/make-student'
+import { InMemoryAttachmentsRepository } from 'test/repositories/in-memory-attachments-repository'
 import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
 import { InMemoryQuestionRepository } from 'test/repositories/in-memory-questions-repository'
+import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
 
 import { QuestionNotFoundError } from '@/core/errors/errors/question-not-found-error'
 import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
@@ -8,34 +13,67 @@ import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 import { GetQuestionBySlugUseCase } from './get-question-by-slug'
 
 let inMemoryQuestionsRepository: InMemoryQuestionRepository
+let inMemoryAttachmentRepository: InMemoryAttachmentsRepository
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let sut: GetQuestionBySlugUseCase
 
 describe('Get Question By Slug', () => {
   beforeEach(() => {
+    inMemoryAttachmentRepository = new InMemoryAttachmentsRepository()
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+
     inMemoryQuestionAttachmentsRepository =
       new InMemoryQuestionAttachmentsRepository()
+
     inMemoryQuestionsRepository = new InMemoryQuestionRepository(
       inMemoryQuestionAttachmentsRepository,
+      inMemoryAttachmentRepository,
+      inMemoryStudentsRepository,
     )
     sut = new GetQuestionBySlugUseCase(inMemoryQuestionsRepository)
   })
 
   it('should be able to get a question by slug', async () => {
+    const student = makeStudent({ name: 'John Doe' })
+
+    inMemoryStudentsRepository.items.push(student)
+
     const newQuestion = makeQuestion({
-      slug: Slug.create('slug-teste'),
+      authorId: student.id,
+      slug: Slug.create('example-slug'),
     })
 
     inMemoryQuestionsRepository.create(newQuestion)
 
-    const result = await sut.execute({
-      slug: 'slug-teste',
+    const attachment = makeAttachment({
+      title: 'Some attachment',
     })
 
-    expect(result.isRight()).toBe(true)
-    expect(inMemoryQuestionsRepository.items[0]?.title).toEqual(
-      newQuestion.title,
+    inMemoryAttachmentRepository.items.push(attachment)
+
+    inMemoryQuestionAttachmentsRepository.items.push(
+      makeQuestionAttachment({
+        attachmentId: attachment.id,
+        questionId: newQuestion.id,
+      }),
     )
+
+    const result = await sut.execute({
+      slug: 'example-slug',
+    })
+
+    expect(result.value).toMatchObject({
+      question: expect.objectContaining({
+        title: newQuestion.title,
+        author: 'John Doe',
+        attachments: [
+          expect.objectContaining({
+            title: 'Some attachment',
+          }),
+        ],
+      }),
+    })
   })
 
   it('not should be able to get a question with wrong slug', async () => {

@@ -66,7 +66,7 @@ export class InMemoryQuestionRepository implements QuestionsRepository {
 
     if (!author) {
       throw new Error(
-        `Author with ID "${question.authorId.toString()}" does not exists`,
+        `Author with ID "${question.authorId.toString()}" does not exist.`,
       )
     }
 
@@ -83,11 +83,11 @@ export class InMemoryQuestionRepository implements QuestionsRepository {
 
       if (!attachment) {
         throw new Error(
-          `Attachment with ID "${questionAttachment.attachmentId}" does not exists`,
+          `Attachment with ID "${questionAttachment.attachmentId.toString()}" does not exist.`,
         )
       }
 
-      return attachments
+      return attachment
     })
 
     return QuestionDetails.create({
@@ -96,11 +96,11 @@ export class InMemoryQuestionRepository implements QuestionsRepository {
       author: author.name,
       title: question.title,
       slug: question.slug,
-      bestAnswerId: question.bestAnswerId,
       content: question.content,
+      bestAnswerId: question.bestAnswerId,
+      attachments,
       createdAt: question.createdAt,
       updatedAt: question.updatedAt,
-      attachments,
     })
   }
 
