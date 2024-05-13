@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 
 import { Either, right } from '@/core/either'
-import { AnswerComment } from '@/domain/forum/enterprise/entities/answer-comment'
+import { CommentWithAuthor } from '@/domain/forum/enterprise/entities/value-objects/comment-with-author'
 
 import { AnswersCommentsRepository } from '../../repositories/answer-comments-repository'
 
@@ -12,9 +12,7 @@ interface ListAnswerCommentsUseCaseRequest {
 
 type ListAnswerCommentsUseCaseResponse = Either<
   null,
-  {
-    answerComments: AnswerComment[]
-  }
+  { comments: CommentWithAuthor[] }
 >
 
 @Injectable()
@@ -25,13 +23,16 @@ export class ListAnswerCommentsUseCase {
     answerId,
     page,
   }: ListAnswerCommentsUseCaseRequest): Promise<ListAnswerCommentsUseCaseResponse> {
-    const answerComments =
-      await this.answerCommentsRepository.findManyByAnswerId(answerId, {
-        page,
-      })
+    const comments =
+      await this.answerCommentsRepository.findManyByAnswerIdWithAuthor(
+        answerId,
+        {
+          page,
+        },
+      )
 
     return right({
-      answerComments,
+      comments,
     })
   }
 }
