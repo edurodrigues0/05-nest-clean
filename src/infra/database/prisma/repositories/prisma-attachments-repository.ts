@@ -7,7 +7,7 @@ import { PrismaAttachmentMapper } from '../mappers/prisma-attachment-mapper'
 import { PrismaService } from '../prisma.service'
 
 @Injectable()
-export class PrismaAttachmentsReopsitory implements AttachmentsRepository {
+export class PrismaAttachmentsRepository implements AttachmentsRepository {
   constructor(readonly prisma: PrismaService) {}
 
   async create(attachment: Attachment): Promise<void> {
