@@ -19,6 +19,7 @@ import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/q
 import { ListRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/question/list-recent-questions'
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/student/authenticate-student'
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/student/register-student'
+import { ReadNotificationUseCase } from '@/domain/notification/application/use-cases/read-notification'
 
 import { CryptographyModule } from '../cryptography/cryptography.module'
 import { DatabaseModule } from '../database/database.module'
@@ -41,6 +42,7 @@ import { FetchQuestionCommentsController } from './controllers/fetch-question-co
 import { FetchQuestionAnswersController } from './controllers/fetch-questions-answers.controller'
 import { FetchRecentQuestionsController } from './controllers/fetch-recent-questions.controller'
 import { GetQuestionBySlugController } from './controllers/get-question-by-slug.controller'
+import { ReadNotificationController } from './controllers/read-notification.controller'
 import { UploadAttachmentController } from './controllers/upload-attachment.controller'
 
 @Module({
@@ -65,6 +67,7 @@ import { UploadAttachmentController } from './controllers/upload-attachment.cont
     FetchQuestionCommentsController,
     FetchAnswerCommentsController,
     UploadAttachmentController,
+    ReadNotificationController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -86,6 +89,7 @@ import { UploadAttachmentController } from './controllers/upload-attachment.cont
     ListQuestionCommentsUseCase,
     ListAnswerCommentsUseCase,
     UploadAndCreateAttachmentUseCase,
+    ReadNotificationUseCase,
   ],
 })
 export class HttpModule {}
